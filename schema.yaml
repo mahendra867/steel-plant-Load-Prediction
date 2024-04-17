@@ -1,0 +1,16 @@
+COLUMNS:
+  date: object
+  Usage_kWh: float64
+  Lagging_Current_Reactive_Power_kVarh: float64
+  Leading_Current_Reactive_Power_kVarh: float64
+  CO2(tCO2): float64
+  Lagging_Current_Power_Factor: float64
+  Leading_Current_Power_Factor: float64
+  NSM: int64
+  WeekStatus: object
+  Day_of_week: object
+  Load_Type: object
+
+
+TARGET_COLUMN:
+  name: Load_Type

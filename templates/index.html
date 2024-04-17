@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steel Plant Load Prediction</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-size: 18px; /* Increase body font size for better readability */
+        }
+        .container {
+            margin-top: 50px;
+            max-width: 800px; /* Increase max-width for better readability */
+        }
+        .form-label {
+            font-size: 20px; /* Increase label font size */
+        }
+        .form-control {
+            font-size: 18px; /* Increase input font size */
+        }
+        .btn-primary {
+            font-size: 20px; /* Increase button font size */
+            margin-top: 15px; /* Add margin to button for better spacing */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Steel Plant Load Prediction</h1>
+        <form action="/predict" method="POST" class="row g-3">
+            <div class="col-md-6">
+                <label for="WeekStatus_Weekday" class="form-label">Enter WeekStatus_Weekday:</label>
+                <input type="number" class="form-control" id="WeekStatus_Weekday" name="WeekStatus_Weekday" min="0" max="1" required>
+                <small class="form-text text-muted">WeekStatus_Weekday must be between 0 and 1</small>
+            </div>
+            <div class="col-md-6">
+                <label for="WeekStatus_Weekend" class="form-label">Enter WeekStatus_Weekend:</label>
+                <input type="number"  class="form-control" id="WeekStatus_Weekend" name="WeekStatus_Weekend" min="0" max="1" required>
+                <small class="form-text text-muted">WeekStatus_Weekend must be between 0 and 1</small>
+            </div>
+            <div class="col-md-6">
+                <label for="Usage_kWh" class="form-label">Enter Usage_kWh Count:</label>
+                <input type="number" step="0.01" class="form-control" id="Usage_kWh" name="Usage_kWh" min="0" max="157.18" required>
+                <small class="form-text text-muted">Usage_kWh must be between 0 and 157.18</small>
+            </div>
+            <div class="col-md-6">
+                <label for="Lagging_Reactive_Power_kVarh" class="form-label">Enter Lagging_Reactive_Power_kVarh:</label>
+                <input type="number" step="0.01" class="form-control" id="Lagging_Reactive_Power_kVarh" name="Lagging_Reactive_Power_kVarh" min="0" max="96.91" required>
+                <small class="form-text text-muted">Lagging_Reactive_Power_kVarh must be between 0 and 96.91</small>
+            </div>
+            <div class="col-md-6">
+                <label for="Leading_Reactive_Power_kVarh" class="form-label">Enter Leading_Reactive_Power_kVarh Count:</label>
+                <input type="number" step="0.01" class="form-control" id="Leading_Reactive_Power_kVarh" name="Leading_Reactive_Power_kVarh" min="0" max="27.76" required>
+                <small class="form-text text-muted">Total Leading_Reactive_Power_kVarh count must be between 0 and 27.76</small>
+            </div>
+            <div class="col-md-6">
+                <label for="CO2" class="form-label">Enter CO2:</label>
+                <input type="number" step="0.01" class="form-control" id="CO2" name="CO2" min="0" max="0.07" required>
+                <small class="form-text text-muted">CO2 must be between 0 and 0.07</small>
+            </div>
+            <div class="col-md-6">
+                <label for="Lagging_Power_Factor" class="form-label">Enter Lagging_Power_Factor Count:</label>
+                <input type="number" step="0.01" class="form-control" id="Lagging_Power_Factor" name="Lagging_Power_Factor" min="0" max="100" required>
+                <small class="form-text text-muted">Lagging_Power_Factor count must be between 0 and 100</small>
+            </div>
+            <div class="col-md-6">
+                <label for="Leading_Power_Factor" class="form-label">Enter Leading_Power_Factor:</label>
+                <input type="number" step="0.01" class="form-control" id="Leading_Power_Factor" name="Leading_Power_Factor" min="0" max="100" required>
+                <small class="form-text text-muted">Leading_Power_Factor must be between 0 and 100</small>
+            </div>            
+            <div class="col-md-6">
+                <label for="NSM" class="form-label">Enter NSM:</label>
+                <input type="number" class="form-control" id="NSM" name="NSM" min="0" max="85500" required>
+                <small class="form-text text-muted">NSM must be between 0 and 85500</small>
+            </div>
+            <div class="col-md-6">
+                <label for="hour" class="form-label">Enter Hour:</label>
+                <input type="number" class="form-control" id="hour" name="hour" min="0" max="24" required>
+                <small class="form-text text-muted">Hour must be between 1 and 24</small>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Predict</button>
+            </div>
+        </form>
+    </div>
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
