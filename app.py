@@ -11,7 +11,7 @@ from bson import ObjectId  # Import ObjectId for handling MongoDB ObjectIds
 
 app = Flask(__name__)
 
-app.config["MONGO_URI"] = "mongodb+srv://Mahendra:JTx5FZA7parBernO@cluster0.klmitxd.mongodb.net/?retryWrites=true&w=majority"
+app.config["MONGO_URI"] = "mongodb+srv://Mahendra:<password>@cluster0.klmitxd.mongodb.net/?retryWrites=true&w=majority"
 
 client = MongoClient(app.config["MONGO_URI"])
 
