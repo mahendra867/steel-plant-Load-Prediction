@@ -12,4 +12,5 @@ joblib
 types-pyYAML
 Flask
 Flask-Cors
+PyMongo
 -e .  # it do look for the setup.py local package
