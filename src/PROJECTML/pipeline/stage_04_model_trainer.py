@@ -15,9 +15,10 @@ class ModelTrainerTrainingPipeline: # here i have created a class
         model_trainer_config = config.get_model_trainer_config() # here iam getting my get_model_trainer_config()
         model_trainer_config = ModelTrainer(config=model_trainer_config) # here iam  passing my  model_trainer_config to the ModelTrainer function
         model_trainer_config.train() # here iam training the model
-        scores=model_trainer_config.model()
-        model_trainer_config.overall_score(scores)
-
+        #scores=model_trainer_config.model()
+        #model_trainer_config.overall_score(scores)
+        model_trainer_config.model_monitering()
+        model_trainer_config.evaluate_model()
 
 
 

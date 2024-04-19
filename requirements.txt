@@ -13,4 +13,5 @@ types-pyYAML
 Flask
 Flask-Cors
 PyMongo
+evidently==0.4.19
 -e .  # it do look for the setup.py local package

@@ -1,0 +1,50 @@
+stages:  # here we mention the configuration related to different pipeline for tracking by dvc 
+  data_ingestion:  # this is the key name of the 1st pipleine which is data_ingestion
+    cmd: python src\PROJECTML\pipeline\stage_01_data_ingestion.py  # here we need to mention the main file of the data_ingestion pipeline so here main file means the file which triggers whole data_ingestion pipeline this file code of data_ingestion pipeline we need to mention in our case it is in pipeline folder which is stage_01_data_ingestion.py  file in which is in pipeline file it contains the main  code for triggering whole data_ingestion source code which is  this cmd key helps us to execeute that main component code of data_ingestion pipeline
+    deps:   # here in order to execute the main component of the data_ingestion pipleine for executing the above command in order to trigger whole data_ingestion sorce code component it that above file stage_01_data_ingestion.py file requires some dependencies which we mention in this key and which are
+      - src\PROJECTML\pipeline\stage_01_data_ingestion.py  # so above cmd itself dependes on this relative in order to execute the above data_ingestion pipeline
+      - config\config.yaml # in order to execute the stage_01_data_ingestion.py it depends on this config file thats y i mention here
+    outs: # here we need to mention output file of the above data_ingestion pipeline execution  and this output is acts as input in order to execute  the next pipeline  which is stage_02_data_transformation.py pipeline 
+      - artifacts\data_ingestion\Steel_industry_data.csv  
+
+  data_validation:
+    cmd: python src\PROJECTML\pipeline\stage_02_data_validation.py
+    deps:
+      - src\PROJECTML\pipeline\stage_02_data_validation.py
+      - config\config.yaml
+      - artifacts\data_ingestion\Steel_industry_data.csv
+      - schema.yaml
+      
+    outs:
+      - artifacts\data_validation\status.txt
+
+
+  data_transformation: 
+    cmd: python src\PROJECTML\pipeline\stage_03_data_transformation.py
+    deps:
+      - src\PROJECTML\pipeline\stage_03_data_transformation.py
+      - config\config.yaml
+      - artifacts\data_ingestion\Steel_industry_data.csv
+
+    outs:
+      - artifacts\data_transformation\train.csv
+      - artifacts\data_transformation\test.csv
+
+  model_trainer:
+    cmd: python src\PROJECTML\pipeline\stage_04_model_trainer.py
+    deps:
+      - src\PROJECTML\pipeline\stage_04_model_trainer.py
+      - config\config.yaml
+      - artifacts\data_transformation\train.csv
+      - artifacts\data_transformation\test.csv
+
+
+    outs:
+      - artifacts\model_trainer\Classification_report.html
+      - artifacts\model_trainer\data_drift_file.html
+      - artifacts\model_trainer\Data_quality_report.html
+      - artifacts\model_trainer\target_drift_report.html
+      - artifacts\model_trainer\ExtraTreesClassifier_model.joblib
+
+
+  
