@@ -1,0 +1,106 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src\PROJECTML\pipeline\stage_01_data_ingestion.py
+    deps:
+    - path: config\config.yaml
+      hash: md5
+      md5: 967bb5c90f4cac5e1920fd77178f5afd
+      size: 3078
+    - path: src\PROJECTML\pipeline\stage_01_data_ingestion.py
+      hash: md5
+      md5: 9f76cc75f9d0aadf505ea5ccad3189eb
+      size: 1672
+    outs:
+    - path: artifacts\data_ingestion\Steel_industry_data.csv
+      hash: md5
+      md5: 072ea7cbc0730bee86b02b856f875fcb
+      size: 2731389
+  data_validation:
+    cmd: python src\PROJECTML\pipeline\stage_02_data_validation.py
+    deps:
+    - path: artifacts\data_ingestion\Steel_industry_data.csv
+      hash: md5
+      md5: 072ea7cbc0730bee86b02b856f875fcb
+      size: 2731389
+    - path: config\config.yaml
+      hash: md5
+      md5: 967bb5c90f4cac5e1920fd77178f5afd
+      size: 3078
+    - path: schema.yaml
+      hash: md5
+      md5: b04fe2e51da1be0c9db25ec9aaef3767
+      size: 367
+    - path: src\PROJECTML\pipeline\stage_02_data_validation.py
+      hash: md5
+      md5: aa17039553315b7beb022e4257fbe7b7
+      size: 1428
+    outs:
+    - path: artifacts\data_validation\status.txt
+      hash: md5
+      md5: 86e6a2f694c57a675b3e2da6b95ff9ba
+      size: 23
+  data_transformation:
+    cmd: python src\PROJECTML\pipeline\stage_03_data_transformation.py
+    deps:
+    - path: artifacts\data_ingestion\Steel_industry_data.csv
+      hash: md5
+      md5: 072ea7cbc0730bee86b02b856f875fcb
+      size: 2731389
+    - path: config\config.yaml
+      hash: md5
+      md5: 967bb5c90f4cac5e1920fd77178f5afd
+      size: 3078
+    - path: src\PROJECTML\pipeline\stage_03_data_transformation.py
+      hash: md5
+      md5: ae3a18d7e9f20c516dbd8eff011c38e6
+      size: 2240
+    outs:
+    - path: artifacts\data_transformation\test.csv
+      hash: md5
+      md5: b32ebee9e3d89c12a9e6e0bc6311f5f0
+      size: 747648
+    - path: artifacts\data_transformation\train.csv
+      hash: md5
+      md5: 9a09c5a860c4125e54d61dd114de4572
+      size: 2242881
+  model_trainer:
+    cmd: python src\PROJECTML\pipeline\stage_04_model_trainer.py
+    deps:
+    - path: artifacts\data_transformation\test.csv
+      hash: md5
+      md5: b32ebee9e3d89c12a9e6e0bc6311f5f0
+      size: 747648
+    - path: artifacts\data_transformation\train.csv
+      hash: md5
+      md5: 9a09c5a860c4125e54d61dd114de4572
+      size: 2242881
+    - path: config\config.yaml
+      hash: md5
+      md5: 967bb5c90f4cac5e1920fd77178f5afd
+      size: 3078
+    - path: src\PROJECTML\pipeline\stage_04_model_trainer.py
+      hash: md5
+      md5: d3d1bdf959fb3539061cfb2a4996600b
+      size: 1465
+    outs:
+    - path: artifacts\model_trainer\Classification_report.html
+      hash: md5
+      md5: c1e6de0659fa5d0bcdabda0306ee6275
+      size: 3436757
+    - path: artifacts\model_trainer\Data_quality_report.html
+      hash: md5
+      md5: e6eb7b2db09af95b20956fab629817e4
+      size: 3715552
+    - path: artifacts\model_trainer\ExtraTreesClassifier_model.joblib
+      hash: md5
+      md5: 2ce8170cfdfd3892e5d69af22e0c09c9
+      size: 123377153
+    - path: artifacts\model_trainer\data_drift_file.html
+      hash: md5
+      md5: 2a995a4d1831faba10d52b26e0e460bd
+      size: 3932983
+    - path: artifacts\model_trainer\target_drift_report.html
+      hash: md5
+      md5: a9104293475cdeccb2f852155f5649ec
+      size: 3416073

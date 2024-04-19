@@ -4,8 +4,8 @@ import os
 from PROJECTML import logger
 import joblib # here iam saving the model because i want to save the data
 from sklearn.model_selection import train_test_split
-from src.PROJECTML.config.configuration import ConfigurationManager
-from src.PROJECTML.components.data_transformation import DataTransformation
+from PROJECTML.config.configuration import ConfigurationManager
+from PROJECTML.components.data_transformation import DataTransformation
 from sklearn.metrics import accuracy_score
 import pickle
 from PROJECTML.entity.config_entity import ModelTrainerConfig

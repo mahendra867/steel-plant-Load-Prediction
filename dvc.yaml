@@ -45,6 +45,7 @@ stages:  # here we mention the configuration related to different pipeline for t
       - artifacts\model_trainer\Data_quality_report.html
       - artifacts\model_trainer\target_drift_report.html
       - artifacts\model_trainer\ExtraTreesClassifier_model.joblib
+      - artifacts\model_trainer\ExtraTreesClassifier_model.joblib
 
 
   
