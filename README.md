@@ -16,15 +16,15 @@ Content
 This company produces several types of coils, steel plates, and iron plates. The information on electricity consumption is held in a cloud-based system. The information on energy consumption of the industry is stored on the website of the Korea Electric Power Corporation (pccs.kepco.go.kr), and the perspectives on daily, monthly, and annual data are calculated and shown.
 
 ## Attribute Information:
-Date Continuous-time data taken on the first of the month
-Usage_kWh Industry Energy Consumption Continuous kWh
-Lagging Current reactive power Continuous kVarh
-Leading Current reactive power Continuous kVarh
-CO2 Continuous ppm
-NSM Number of Seconds from midnight Continuous S
-Week status Categorical (Weekend (0) or a Weekday(1))
-Day of week Categorical Sunday, Monday : Saturday
-Load Type Categorical Light Load, Medium Load, Maximum Load
+- Date Continuous-time data taken on the first of the month
+- Usage_kWh Industry Energy Consumption Continuous kWh
+- Lagging Current reactive power Continuous kVarh
+- Leading Current reactive power Continuous kVarh
+- CO2 Continuous ppm
+- NSM Number of Seconds from midnight Continuous S
+- Week status Categorical (Weekend (0) or a Weekday(1))
+- Day of week Categorical Sunday, Monday : Saturday
+- Load Type Categorical Light Load, Medium Load, Maximum Load
 
 
 ## Approach
@@ -60,12 +60,13 @@ Input data is passed through the loaded model to generate predictions. Predicted
 ## Airflow DAG for Single Value Prediction:
 An Airflow DAG automates the execution of the training pipeline on a weekly basis. It consists of the following tasks:
 
-Data Ingestion: Downloads and extracts the dataset.
-Data Validation: Validates the ingested data against a schema.
-Data Transformation: Prepares the data for model training.
-Model Training: Trains an Extra Trees Classifier model.
-Scheduling: The DAG is scheduled to run weekly, starting from a specified date.
-Docker Configuration:
+- Data Ingestion: Downloads and extracts the dataset.
+- Data Validation: Validates the ingested data against a schema.
+- Data Transformation: Prepares the data for model training.
+- Model Training: Trains an Extra Trees Classifier model.
+- Scheduling: The DAG is scheduled to run weekly, starting from a specified date.
+- 
+## Docker Configuration:
 The project is containerized using Docker for portability and reproducibility.
 
 Base Image: Uses apache/airflow:2.8.3 and python:3.8.
