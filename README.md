@@ -81,7 +81,7 @@ This setup ensures the ML pipeline's scalability, reproducibility, and scheduled
 Clone the repository
 
 ```bash
-https://github.com/mahendra867/End-to-End-sentimental-analysis-with-NLP.git
+https://github.com/mahendra867/steel-plant-Load-Prediction.git
 ```
 ### STEP 01- Create a conda environment after opening the repository
 
