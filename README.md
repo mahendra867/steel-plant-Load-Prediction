@@ -65,7 +65,7 @@ An Airflow DAG automates the execution of the training pipeline on a weekly basi
 - Data Transformation: Prepares the data for model training.
 - Model Training: Trains an Extra Trees Classifier model.
 - Scheduling: The DAG is scheduled to run weekly, starting from a specified date.
-- 
+
 ## Docker Configuration:
 The project is containerized using Docker for portability and reproducibility.
 
